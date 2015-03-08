@@ -45,27 +45,29 @@ public class User {
 			HttpException {
 		String authString = Constants.CLIENT_ID + ":" + Constants.CLIENT_SECRET;
 
-		System.out.println(authString);
+		// System.out.println(authString);
 		String base64AuthString = "Basic "
 				+ Base64.encodeBase64String(authString.getBytes());
 
 		HttpPost httpPostToken = new HttpPost(Constants.BASE_URL_TOKEN);
 		httpPostToken.setHeader("Authorization", base64AuthString);
-		System.out.println(httpPostToken.getRequestLine());
-		System.out.println(httpPostToken.getAllHeaders()[0].getName() + " "
-				+ httpPostToken.getAllHeaders()[0].getValue());
+		// System.out.println(httpPostToken.getRequestLine());
+		/*
+		 * System.out.println(httpPostToken.getAllHeaders()[0].getName() + " " +
+		 * httpPostToken.getAllHeaders()[0].getValue());
+		 */
 		try {
 			HttpResponse responseToken = httpClient.execute(httpPostToken);
 			StatusLine statusLine = responseToken.getStatusLine();
-			System.out.println("Completes Token");
-			System.out.println(statusLine.getStatusCode());
+			// System.out.println("Completes Token");
+			// System.out.println(statusLine.getStatusCode());
 			if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
 				JsonObject jsonComplete = parser.parse(
 						getStringFromHttpResponse(responseToken))
 						.getAsJsonObject();
 				String accessToken = jsonComplete.get("access_token")
 						.getAsString();
-				System.out.println("Got Token:" + accessToken);
+				//System.out.println("Got Token:" + accessToken);
 
 				mAccessToken = accessToken;
 				login();

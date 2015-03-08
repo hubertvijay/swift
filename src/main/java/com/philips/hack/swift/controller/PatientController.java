@@ -20,6 +20,7 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.hl7.fhir.instance.formats.JsonParser;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.philips.hack.swift.Constants;
 import com.philips.hack.swift.ConvertUtility;
@@ -69,37 +71,6 @@ public class PatientController {
 		return user.logout();
 	}
 
-	/*
-	 * @RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
-	 * public @ResponseBody String getPatientInfo(@PathVariable("id") String id)
-	 * throws IOException, URISyntaxException, HttpException { User user = new
-	 * User(); String patientId = user.getPatientID();
-	 * System.out.println(patientId);
-	 * 
-	 * String request = Constants.BASE_URL_PATIENT + "/" + id +
-	 * "?_format=json?_pretty=true"; URL obj = new URL(request);
-	 * HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-	 * 
-	 * // optional default is GET con.setRequestMethod("GET");
-	 * 
-	 * // add request header // con.setRequestProperty("User-Agent", //
-	 * USER_AGENT); con.setRequestProperty("Authorization", "Bearer " +
-	 * user.getAccessToken()); con.setRequestProperty("Accept",
-	 * "application/json");
-	 * 
-	 * int responseCode = con.getResponseCode();
-	 * System.out.println("\nSending 'GET' request to URL : " + request);
-	 * System.out.println("Response Code : " + responseCode);
-	 * 
-	 * BufferedReader in = new BufferedReader(new InputStreamReader(
-	 * con.getInputStream())); String inputLine; StringBuffer response = new
-	 * StringBuffer();
-	 * 
-	 * while ((inputLine = in.readLine()) != null) { response.append(inputLine);
-	 * } in.close(); user.logout(); System.out.println(response.toString());
-	 * return response.toString(); }
-	 */
-
 	@RequestMapping(value = "/observation/{patientid}/{observationid}", method = RequestMethod.GET)
 	public @ResponseBody String getObservation(
 			@PathVariable("patientid") String patientId,
@@ -112,7 +83,7 @@ public class PatientController {
 				+ patientId + "&name="
 				+ URLEncoder.encode("http://loinc.org|" + observationCode)
 				+ "?_format=json?_pretty=true";
-		System.out.println(url);
+		// System.out.println(url);
 		return getData(url);
 	}
 
@@ -121,28 +92,30 @@ public class PatientController {
 			@PathVariable("observationid") String observationId)
 			throws URISyntaxException, HttpException, IOException {
 
-		//String observationCode = ConvertUtility.getObservationId(observationId);
+		// String observationCode =
+		// ConvertUtility.getObservationId(observationId);
 		String patientId = "a102";
 		String url = Constants.BASE_URL_OBSERVATION + "?subject._id="
 				+ patientId + "&name="
 				+ URLEncoder.encode("http://loinc.org|" + observationId)
 				+ "&_format=json&_pretty=true";
-		System.out.println(url);
+		// System.out.println(url);
 		return getData(url);
 	}
-	
-	@RequestMapping(value = "/observation/{observationid}", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/observation/{observationname}", method = RequestMethod.GET)
 	public @ResponseBody String getObservation(
-			@PathVariable("observationid") String observationId)
+			@PathVariable("observationname") String observationname)
 			throws URISyntaxException, HttpException, IOException {
 
-		String observationCode = ConvertUtility.getObservationId(observationId);
+		String observationCode = ConvertUtility
+				.getObservationId(observationname);
 		String patientId = "a102";
 		String url = Constants.BASE_URL_OBSERVATION + "?subject._id="
 				+ patientId + "&name="
 				+ URLEncoder.encode("http://loinc.org|" + observationCode)
 				+ "&_format=json&_pretty=true";
-		System.out.println(url);
+		// System.out.println(url);
 		return getData(url);
 	}
 
@@ -158,7 +131,7 @@ public class PatientController {
 			IOException {
 		User user = new User();
 		String patientId = user.getPatientID();
-		System.out.println(patientId);
+		// System.out.println(patientId);
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -172,8 +145,8 @@ public class PatientController {
 		con.setRequestProperty("Accept", "application/json");
 
 		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'GET' request to URL : " + url);
-		System.out.println("Response Code : " + responseCode);
+		// System.out.println("\nSending 'GET' request to URL : " + url);
+		// System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(
 				con.getInputStream()));
@@ -185,8 +158,48 @@ public class PatientController {
 		}
 		in.close();
 		user.logout();
-		System.out.println("Logged out user successfully");
-		System.out.println(response.toString());
+		// System.out.println("Logged out user successfully");
+		// System.out.println(response.toString());
 		return response.toString();
+	}
+
+	public static String jsonParseToObject(String responseString) {
+		com.google.gson.JsonParser parser = new com.google.gson.JsonParser();
+		JsonObject inJsonComplete = parser.parse(responseString)
+				.getAsJsonObject();
+
+		JsonParser fhirJsonParser = new JsonParser();
+		if (inJsonComplete.has("entry")) {
+			JsonArray jsonList = inJsonComplete.getAsJsonArray(("entry"));
+
+			for (int i = 0; i < jsonList.size(); i++) {
+				// Data comes with double quotes "SomeTitle", so removing double
+				// quotes
+				String title = jsonList.get(i).getAsJsonObject().get("title")
+						.toString().replaceAll("^\"|\"$", "");
+				String id = jsonList.get(i).getAsJsonObject().get("id")
+						.toString().replaceAll("^\"|\"$", "");
+				;
+				String dateUpdated = jsonList.get(i).getAsJsonObject()
+						.get("updated").toString().replaceAll("^\"|\"$", "");
+
+				JsonObject observationJson = jsonList.get(i).getAsJsonObject()
+						.getAsJsonObject("content");
+
+				HSDPObservation phpsObservation = (HSDPObservation) getPHPSObjectFromJson(
+						PHPS_OBJECT.Observation, fhirJsonParser,
+						observationJson);
+				if (phpsObservation == null)
+					return false;
+
+				phpsObservation.setExtraInfo(id, title, dateUpdated);
+			}
+		} else {
+			HSDPObservation phpsObservation = (HSDPObservation) getPHPSObjectFromJson(
+					PHPS_OBJECT.Observation, fhirJsonParser, inJsonComplete);
+			if (phpsObservation == null)
+				return false;
+		}
+
 	}
 }
