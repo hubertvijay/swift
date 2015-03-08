@@ -21,6 +21,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.model.Observation;
+import org.hl7.fhir.instance.model.Organization;
+import org.hl7.fhir.instance.model.Patient;
+import org.hl7.fhir.instance.model.Resource;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,8 +35,13 @@ import org.springframework.web.client.RestTemplate;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.philips.hack.swift.Constants;
+import com.philips.hack.swift.Constants.PHPS_OBJECT;
 import com.philips.hack.swift.ConvertUtility;
 import com.philips.hack.swift.config.User;
+import com.philips.hack.swift.model.HSDPObject;
+import com.philips.hack.swift.model.HSDPObservation;
+import com.philips.hack.swift.model.HSDPOrganization;
+import com.philips.hack.swift.model.HSDPPatient;
 
 @RestController
 public class PatientController {
@@ -116,7 +125,9 @@ public class PatientController {
 				+ URLEncoder.encode("http://loinc.org|" + observationCode)
 				+ "&_format=json&_pretty=true";
 		// System.out.println(url);
-		return getData(url);
+		String json = getData(url);
+		String response = jsonParseToObject(json);
+		return response;
 	}
 
 	@RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
@@ -163,12 +174,46 @@ public class PatientController {
 		return response.toString();
 	}
 
-	public static String jsonParseToObject(String responseString) {
+	public static HSDPObject getPHPSObjectFromJson(PHPS_OBJECT inWhat,
+			JsonParser fhirJsonParser, JsonObject jsonObject) {
+		try {
+			Resource resource = fhirJsonParser.parse(jsonObject);
+
+			switch (inWhat) {
+			case Patient:
+				Patient patientObj = (Patient) resource;
+				HSDPPatient phpsPatientObject = new HSDPPatient(patientObj);
+				return phpsPatientObject;
+			case Observation:
+				Observation observationObj = (Observation) resource;
+				HSDPObservation phpsObservationObject = new HSDPObservation(
+						observationObj);
+				return phpsObservationObject;
+			case Organization:
+				Organization organizationObj = (Organization) resource;
+				HSDPOrganization phpsOrganizationObject = new HSDPOrganization(
+						organizationObj);
+				return phpsOrganizationObject;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public static String jsonParseToObject(String request) {
+		StringBuffer response = new StringBuffer();
 		com.google.gson.JsonParser parser = new com.google.gson.JsonParser();
-		JsonObject inJsonComplete = parser.parse(responseString)
-				.getAsJsonObject();
+		JsonObject inJsonComplete = parser.parse(request).getAsJsonObject();
 
 		JsonParser fhirJsonParser = new JsonParser();
+
+		boolean set = false;
+
+		response.append("{");
+
 		if (inJsonComplete.has("entry")) {
 			JsonArray jsonList = inJsonComplete.getAsJsonArray(("entry"));
 
@@ -190,16 +235,35 @@ public class PatientController {
 						PHPS_OBJECT.Observation, fhirJsonParser,
 						observationJson);
 				if (phpsObservation == null)
-					return false;
+					return null;
 
 				phpsObservation.setExtraInfo(id, title, dateUpdated);
+
+				response.append("{");
+				response.append(phpsObservation.getObservationName());
+				response.append(":");
+				response.append(phpsObservation.getObservationValue());
+				response.append("}");
+				response.append(",");
+				/*
+				 * System.out.println(phpsObservation.getObservationName() +
+				 * " - " + phpsObservation.getObservationValue());
+				 */
 			}
 		} else {
 			HSDPObservation phpsObservation = (HSDPObservation) getPHPSObjectFromJson(
 					PHPS_OBJECT.Observation, fhirJsonParser, inJsonComplete);
+			response.append("{");
+			response.append(phpsObservation.getObservationName());
+			response.append(":");
+			response.append(phpsObservation.getObservationValue());
+			response.append("}");
+			response.append(",");
 			if (phpsObservation == null)
-				return false;
+				return null;
 		}
+		response.append("}");
+		return response.toString();
 
 	}
 }
