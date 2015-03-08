@@ -1,0 +1,566 @@
+Request:
+
+//Get User a102 details
+
+http://localhost:8080/patient/a102
+
+Response:
+
+{"resourceType":"Patient","extension":[{"url":"http://hl7.org/fhir/Profile/us-core#race","valueCodeableConcept":{"coding":[{"system":"http://hl7.org/fhir/v3/Race","code":"2108-9"}]}}],"text":{"status":"generated","div":"
+Anderson NANCY
+Identifier	Philips HealthSuite ID
+Address	9 City St 
+New York NY US
+Date of birth	05 February 1970
+"},"identifier":[{"use":"official","label":"Philips HealthSuite ID","system":"https://healthsuite-ppe.philips.com/patients","value":"nancy.anderson","period":{"start":"2014-09-21"},"assigner":{"display":"Philips HealthSuite"}}],"name":[{"use":"usual","text":"Nancy Anderson","family":["Anderson"],"given":["Nancy"]}],"telecom":[{"system":"email","value":"nancy.anderson@mail.com"},{"system":"phone","value":"(212) 221 4335"}],"gender":{"coding":[{"system":"http://hl7.org/fhir/v3/AdministrativeGender","code":"F","display":"Female"}]},"birthDate":"1970-02-05","address":[{"use":"home","line":["9 City St"],"city":"New York","state":"NY","zip":"11004","country":"US"}],"maritalStatus":{"coding":[{"system":"http://hl7.org/fhir/v3/MaritalStatus","code":"M","display":"Married"}]},"managingOrganization":{"reference":"Organization/phr"},"active":true}
+
+
+Request:
+
+//Get User details for the observation - bloodpressure
+
+http://localhost:8080/observation/bloodpressure
+
+
+Response:
+
+{ "resourceType":"Bundle", "id":"7e8e94fb-bc9a-4d46-ba1c-e85fe00db674", "published":"2015-03-08T05:15:29.944+00:00", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation?subject._id=a102&name=http%3A%2F%2Floinc.org%7C55284-4&_format=json&_pretty=true" }, { "rel":"next", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest?_getpages=77e76494-8431-4e25-9197-1d0abb683e97&_getpagesoffset=10&_count=10&_format=json&_pretty=true" }, { "rel":"fhir-base", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest" } ], "totalResults":"365", "author":[ { "name":"Philips FHIR Server" } ], "entry":[ { "title":"Observation Observation/45059/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/45059", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/45059/_history/1" } ], "updated":"2015-03-06T02:01:22.000+00:00", "published":"2015-03-06T02:01:22.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-04-07T14:36:02-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/45050" } }, { "type":"has-component", "target":{ "reference":"Observation/45053" } }, { "type":"has-component", "target":{ "reference":"Observation/45056" } } ] } }, { "title":"Observation Observation/46595/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/46595", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/46595/_history/1" } ], "updated":"2015-03-06T02:01:50.000+00:00", "published":"2015-03-06T02:01:50.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-08-13T16:34:47-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/46586" } }, { "type":"has-component", "target":{ "reference":"Observation/46589" } }, { "type":"has-component", "target":{ "reference":"Observation/46592" } } ] } }, { "title":"Observation Observation/48131/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/48131", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/48131/_history/1" } ], "updated":"2015-03-06T02:02:22.000+00:00", "published":"2015-03-06T02:02:22.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-12-19T15:46:32-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/48122" } }, { "type":"has-component", "target":{ "reference":"Observation/48125" } }, { "type":"has-component", "target":{ "reference":"Observation/48128" } } ] } }, { "title":"Observation Observation/44039/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/44039", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/44039/_history/1" } ], "updated":"2015-03-06T02:01:01.000+00:00", "published":"2015-03-06T02:01:01.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-01-12T11:06:35-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/44030" } }, { "type":"has-component", "target":{ "reference":"Observation/44033" } }, { "type":"has-component", "target":{ "reference":"Observation/44036" } } ] } }, { "title":"Observation Observation/45575/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/45575", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/45575/_history/1" } ], "updated":"2015-03-06T02:01:31.000+00:00", "published":"2015-03-06T02:01:31.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-05-20T08:08:39-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/45566" } }, { "type":"has-component", "target":{ "reference":"Observation/45569" } }, { "type":"has-component", "target":{ "reference":"Observation/45572" } } ] } }, { "title":"Observation Observation/47111/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/47111", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/47111/_history/1" } ], "updated":"2015-03-06T02:02:00.000+00:00", "published":"2015-03-06T02:02:00.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-09-25T11:02:00-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/47102" } }, { "type":"has-component", "target":{ "reference":"Observation/47105" } }, { "type":"has-component", "target":{ "reference":"Observation/47108" } } ] } }, { "title":"Observation Observation/44555/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/44555", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/44555/_history/1" } ], "updated":"2015-03-06T02:01:11.000+00:00", "published":"2015-03-06T02:01:11.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-02-24T18:27:54-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/44546" } }, { "type":"has-component", "target":{ "reference":"Observation/44549" } }, { "type":"has-component", "target":{ "reference":"Observation/44552" } } ] } }, { "title":"Observation Observation/46091/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/46091", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/46091/_history/1" } ], "updated":"2015-03-06T02:01:41.000+00:00", "published":"2015-03-06T02:01:41.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-07-02T12:16:39-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/46082" } }, { "type":"has-component", "target":{ "reference":"Observation/46085" } }, { "type":"has-component", "target":{ "reference":"Observation/46088" } } ] } }, { "title":"Observation Observation/47627/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/47627", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/47627/_history/1" } ], "updated":"2015-03-06T02:02:12.000+00:00", "published":"2015-03-06T02:02:12.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-11-07T19:42:58-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/47618" } }, { "type":"has-component", "target":{ "reference":"Observation/47621" } }, { "type":"has-component", "target":{ "reference":"Observation/47624" } } ] } }, { "title":"Observation Observation/45071/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/45071", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/45071/_history/1" } ], "updated":"2015-03-06T02:01:22.000+00:00", "published":"2015-03-06T02:01:22.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Blood Pressure: Systolic, Diastolic, and Mean
+" }, "name":{ "coding":[ { "system":"http://loinc.org", "code":"55284-4", "display":"Blood pressure systolic & diastolic" }, { "system":"http://snomed.info/sct", "code":"75367002", "display":"Blood pressure" }, { "system":"https://rtmms.nist.gov", "code":"150016", "display":"MDC_PRESS_BLD" } ] }, "appliesDateTime":"2014-04-08T11:09:40-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" }, "related":[ { "type":"has-component", "target":{ "reference":"Observation/45062" } }, { "type":"has-component", "target":{ "reference":"Observation/45065" } }, { "type":"has-component", "target":{ "reference":"Observation/45068" } } ] } } ]}
+
+
+Request:
+
+//Get User details for the observation - pulserate
+
+http://localhost:8080/observation/pulserate
+
+
+Response:
+
+{ "resourceType":"Bundle", "id":"2011d87e-0e39-44e7-8c12-33ea24525e98", "published":"2015-03-08T05:16:26.342+00:00", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation?subject._id=a102&name=http%3A%2F%2Floinc.org%7C8867-4&_format=json&_pretty=true" }, { "rel":"next", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest?_getpages=c501a140-d1c8-4c53-bb0d-19f00d050ad3&_getpagesoffset=10&_count=10&_format=json&_pretty=true" }, { "rel":"fhir-base", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest" } ], "totalResults":"365", "author":[ { "name":"Philips FHIR Server" } ], "entry":[ { "title":"Observation Observation/39425/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39425", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39425/_history/1" } ], "updated":"2015-03-06T02:00:22.000+00:00", "published":"2015-03-06T02:00:22.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Mon Mar 31 10:02:26 PDT 2014GMT-06:00: Heart Beats Per Minute = 79.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":79.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-03-31T11:02:26-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39938/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39938", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39938/_history/1" } ], "updated":"2015-03-06T02:00:26.000+00:00", "published":"2015-03-06T02:00:26.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Thu Sep 18 13:23:03 PDT 2014GMT-05:00: Heart Beats Per Minute = 83.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":83.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-09-18T15:23:03-05:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39428/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39428", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39428/_history/1" } ], "updated":"2015-03-06T02:00:22.000+00:00", "published":"2015-03-06T02:00:22.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Tue Apr 01 15:26:41 PDT 2014GMT-06:00: Heart Beats Per Minute = 80.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":80.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-04-01T16:26:41-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39941/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39941", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39941/_history/1" } ], "updated":"2015-03-06T02:00:26.000+00:00", "published":"2015-03-06T02:00:26.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Fri Sep 19 06:38:14 PDT 2014GMT-05:00: Heart Beats Per Minute = 82.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":82.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-09-19T08:38:14-05:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39431/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39431", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39431/_history/1" } ], "updated":"2015-03-06T02:00:22.000+00:00", "published":"2015-03-06T02:00:22.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Wed Apr 02 09:34:48 PDT 2014GMT-06:00: Heart Beats Per Minute = 81.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":81.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-04-02T10:34:48-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39944/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39944", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39944/_history/1" } ], "updated":"2015-03-06T02:00:26.000+00:00", "published":"2015-03-06T02:00:26.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Sat Sep 20 13:46:31 PDT 2014GMT-05:00: Heart Beats Per Minute = 81.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":81.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-09-20T15:46:31-05:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39434/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39434", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39434/_history/1" } ], "updated":"2015-03-06T02:00:22.000+00:00", "published":"2015-03-06T02:00:22.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Thu Apr 03 09:31:29 PDT 2014GMT-06:00: Heart Beats Per Minute = 81.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":81.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-04-03T10:31:29-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39947/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39947", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39947/_history/1" } ], "updated":"2015-03-06T02:00:26.000+00:00", "published":"2015-03-06T02:00:26.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Sun Sep 21 08:21:41 PDT 2014GMT-05:00: Heart Beats Per Minute = 82.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":82.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-09-21T10:21:41-05:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39437/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39437", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39437/_history/1" } ], "updated":"2015-03-06T02:00:22.000+00:00", "published":"2015-03-06T02:00:22.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Fri Apr 04 11:43:27 PDT 2014GMT-06:00: Heart Beats Per Minute = 81.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":81.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-04-04T12:43:27-06:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } }, { "title":"Observation Observation/39950/_history/1", "id":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39950", "link":[ { "rel":"self", "href":"https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/39950/_history/1" } ], "updated":"2015-03-06T02:00:26.000+00:00", "published":"2015-03-06T02:00:26.000+00:00", "content":{ "resourceType":"Observation", "text":{ "status":"generated", "div":"
+Mon Sep 22 10:09:40 PDT 2014GMT-05:00: Heart Beats Per Minute = 82.00 bpm
+" }, "name":{ "coding":[ { "system":"https://rtmms.nist.gov", "code":"149546", "display":"MDC_PULS_RATE_NON_INV" }, { "system":"http://loinc.org", "code":"8867-4", "display":"Pulse" } ] }, "valueQuantity":{ "value":82.00, "units":"bpm", "system":"http://unitsofmeasure.org", "code":"{beats}/min" }, "appliesDateTime":"2014-09-22T12:09:40-05:00", "status":"registered", "reliability":"ok", "subject":{ "reference":"Patient/a102" } } } ]}
+
+
+
+//Request - Get all observations for the User a102
+
+
+https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation?subject._id=a102
+
+Response:
+
+{
+    "resourceType": "Bundle",
+    "id": "1a45479a-7bea-4a1b-aceb-bf3ec3ea5288",
+    "published": "2015-03-08T05:17:49.834+00:00",
+    "link": [
+        {
+            "rel": "self",
+            "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation?subject._id=a102"
+        },
+        {
+            "rel": "next",
+            "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest?_getpages=b0efd181-2986-4975-9eb4-f5b254cd09b4&_getpagesoffset=10&_count=10&_format=json"
+        },
+        {
+            "rel": "fhir-base",
+            "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest"
+        }
+    ],
+    "totalResults": "4505",
+    "author": [
+        {
+            "name": "Philips FHIR Server"
+        }
+    ],
+    "entry": [
+        {
+            "title": "Observation Observation/40961/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40961",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40961/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:34.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mon Aug 25 08:39:00 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 83.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 83,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-08-25T10:39:00-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40964/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40964",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40964/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:34.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Tue Aug 26 09:15:13 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 82.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 82,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-08-26T11:15:13-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40967/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40967",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40967/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:34.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Wed Aug 27 13:13:09 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 83.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 83,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-08-27T15:13:09-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40970/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40970",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40970/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:35.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Thu Aug 28 13:28:31 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 83.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 83,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-08-28T15:28:31-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40973/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40973",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40973/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:35.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Fri Aug 29 06:11:44 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 83.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 83,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-08-29T08:11:44-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40976/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40976",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40976/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:35.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sat Aug 30 07:53:12 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 83.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 83,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-08-30T09:53:12-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40979/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40979",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40979/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:35.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sun Aug 31 10:14:29 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 84.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 84,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-08-31T12:14:29-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40982/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40982",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40982/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:35.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mon Sep 01 09:33:14 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 83.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 83,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-09-01T11:33:14-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40985/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40985",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40985/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:35.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Tue Sep 02 14:08:10 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 83.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 83,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-09-02T16:08:10-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        },
+        {
+            "title": "Observation Observation/40988/_history/1",
+            "id": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40988",
+            "link": [
+                {
+                    "rel": "self",
+                    "href": "https://gateway.api.pcftest.com:9004/v1/fhir_rest/Observation/40988/_history/1"
+                }
+            ],
+            "updated": "2015-03-06T02:00:35.000+00:00",
+            "published": "2015-03-06T02:00:34.000+00:00",
+            "content": {
+                "resourceType": "Observation",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Wed Sep 03 08:07:29 PDT 2014GMT-05:00: Pulse (Heart Rate) by Pulse Oximetry = 82.00 bpm</div>"
+                },
+                "name": {
+                    "coding": [
+                        {
+                            "system": "https://rtmms.nist.gov",
+                            "code": "149530",
+                            "display": "MDC_PULS_OXIM_PULS_RATE"
+                        },
+                        {
+                            "system": "http://loinc.org",
+                            "code": "8889-8",
+                            "display": "Pulse via Pulse Oximeter"
+                        }
+                    ]
+                },
+                "valueQuantity": {
+                    "value": 82,
+                    "units": "bpm",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "{beats}/min"
+                },
+                "appliesDateTime": "2014-09-03T10:07:29-05:00",
+                "status": "registered",
+                "reliability": "ok",
+                "subject": {
+                    "reference": "Patient/a102"
+                }
+            }
+        }
+    ]
+}

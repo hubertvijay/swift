@@ -10,6 +10,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -18,6 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 
 import org.apache.commons.codec.binary.*;
 
@@ -66,7 +68,7 @@ public class User {
 				System.out.println("Got Token:" + accessToken);
 
 				mAccessToken = accessToken;
-				authenticateUser();
+				login();
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -83,7 +85,7 @@ public class User {
 		return mAccessToken;
 	}
 
-	private void authenticateUser() throws URISyntaxException, HttpException {
+	private void login() throws URISyntaxException, HttpException {
 		try {
 			HttpPost httpPostLogin = new HttpPost(Constants.BASE_URL_LOGIN);
 			httpPostLogin.setHeader("Content-type", "application/json");
@@ -107,9 +109,8 @@ public class User {
 								.get("fhir_patient_id") != null
 						&& jsonComplete.get("user").getAsJsonObject()
 								.get("fhir_organization_id") != null) {
-					mPatientUrlId = jsonComplete.get("user")
-							.getAsJsonObject().get("fhir_patient_id")
-							.getAsString();
+					mPatientUrlId = jsonComplete.get("user").getAsJsonObject()
+							.get("fhir_patient_id").getAsString();
 					mOrganizationUrlId = jsonComplete.get("user")
 							.getAsJsonObject().get("fhir_organization_id")
 							.getAsString();
@@ -131,10 +132,34 @@ public class User {
 
 	}
 
+	public String displayPatient(String id) {
+		try {
+			HttpPost httpPostLogin = new HttpPost(Constants.BASE_URL_LOGIN);
+			httpPostLogin.setHeader("Content-type", "application/json");
+			httpPostLogin.setHeader("Authorization",
+					getAuthorizationBearerHttpHeader());
+			httpPostLogin.setEntity(new StringEntity(getHttpEntity()));
+
+			HttpResponse responseLogin = httpclient.execute(httpPostLogin);
+			StatusLine statusLine = responseLogin.getStatusLine();
+
+			if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
+				JsonObject jsonComplete = parser.parse(
+						getStringFromHttpResponse(responseLogin))
+						.getAsJsonObject();
+			}
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
 	public String getPatientID() {
 		return mPatientUrlId;
 	}
-	
+
 	public boolean logout() throws URISyntaxException, HttpException {
 		HttpDelete httpPostToken = new HttpDelete(Constants.BASE_URL_LOGOUT);
 		httpPostToken.setHeader("Authorization",
@@ -186,5 +211,4 @@ public class User {
 	public String getAccessToken() {
 		return mAccessToken;
 	}
-
 }

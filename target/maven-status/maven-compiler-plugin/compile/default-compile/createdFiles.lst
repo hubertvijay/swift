@@ -455,6 +455,7 @@ org/hl7/fhir/instance/model/AdverseReaction$AdverseReactionExposureComponent.cla
 org/hl7/fhir/instance/model/Patient$PatientLinkComponent.class
 org/hl7/fhir/instance/model/CarePlan$CarePlanActivityStatusEnumFactory.class
 org/hl7/fhir/utilities/CSFile.class
+com/philips/hack/swift/ConvertUtility.class
 org/hl7/fhir/utilities/MyURIResolver.class
 org/hl7/fhir/utilities/xhtml/NodeType.class
 org/hl7/fhir/instance/model/DocumentReference$DocumentReferenceServiceParameterComponent.class
