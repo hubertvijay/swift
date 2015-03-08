@@ -1,7 +1,8 @@
-package com.philips.hack.swift;
+package com.philips.hack.swift.config;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.philips.hack.swift.Constants;
 
 import org.apache.http.HttpException;
 import org.apache.http.HttpResponse;

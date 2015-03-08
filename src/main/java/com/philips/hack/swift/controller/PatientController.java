@@ -1,4 +1,4 @@
-package com.philips.hack.swift;
+package com.philips.hack.swift.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.philips.hack.swift.config.User;
+
 @RestController
-public class HelloController {
+public class PatientController {
 
 	@RequestMapping("/hello")
 	public @ResponseBody String hello() {
