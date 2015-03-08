@@ -57,4 +57,6 @@ public class Constants {
 			+ "Organization";
 	public static final String BASE_URL_OBSERVATION = BASE_FHIR_INFO_URL
 			+ "Observation";
+	
+	public static enum PHPS_OBJECT {Patient, Observation, Organization};
 }
