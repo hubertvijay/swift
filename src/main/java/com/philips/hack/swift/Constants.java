@@ -1,3 +1,5 @@
+package com.philips.hack.swift;
+
 
 /**
  * Copyright (c) 2014-2015 Koninklijke Philips N.V.
